@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects — Mischa Dzubay{% endblock %}
+
+{% block content %}
+<main class="container">
+  <section class="panel">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h1>Projects</h1>
+      <a href="{{ url_for('add_project') }}" class="btn primary">+ Add New Project</a>
+    </div>
+    
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+      <thead>
+        <tr style="background-color: #f5f5f5; border-bottom: 2px solid #ddd;">
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Title</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Description</th>
+          <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">Image</th>
+          <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Technologies</th>
+          <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for project in projects %}
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">
+            {{ project.Title }}
+          </td>
+          <td style="padding: 12px; border: 1px solid #ddd;">
+            {{ project.Description }}
+          </td>
+          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
+            <img src="{{ url_for('static', filename='static/images/' + project.ImageFileName) }}" 
+                 alt="{{ project.Title }}" 
+                 title="{{ project.Title }}"
+                 style="max-width: 200px; max-height: 150px; display: block; margin: 0 auto;">
+          </td>
+          <td style="padding: 12px; border: 1px solid #ddd;">
+            {% if project.TechnologiesUsed %}
+              <div class="tags">
+                {% for tech in project.TechnologiesUsed.split(',') %}
+                <span class="tag">{{ tech.strip() }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              —
+            {% endif %}
+          </td>
+          <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">
+            {% if project.ProjectURL %}
+            <a class="btn primary" href="{{ project.ProjectURL }}" target="_blank" rel="noopener" style="display: block; margin-bottom: 8px;">View Project</a>
+            {% endif %}
+            
+            {% if project.GitHubURL %}
+            <a class="btn" href="{{ project.GitHubURL }}" target="_blank" rel="noopener" style="display: block;">GitHub</a>
+            {% endif %}
+            
+            {% if not project.ProjectURL and not project.GitHubURL %}
+            —
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+    {% if not projects %}
+    <p style="margin-top: 20px; text-align: center; color: #666;">No projects found.</p>
+    {% endif %}
+    
+  </section>
+</main>
+{% endblock %}

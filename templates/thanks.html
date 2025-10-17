@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Thanks — Mischa Dzubay{% endblock %}
+
+{% block content %}
+<main class="container">
+  <section class="panel">
+    <h1>Thank you!</h1>
+    <p>Thank you for reaching out, I'll get back to you at my earliest convenience!</p>
+    <div class="btn-row">
+      <a class="btn" href="{{ url_for('index') }}">Return home</a>
+    </div>
+  </section>
+</main>
+{% endblock %}

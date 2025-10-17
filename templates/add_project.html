@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Project — Mischa Dzubay{% endblock %}
+
+{% block content %}
+<main class="container">
+  <section class="panel">
+    <h1>Add New Project</h1>
+    <p>Use this form to add a new project to your portfolio. The project will appear on the Projects page immediately.</p>
+    <p><strong>Note:</strong> Make sure to upload your project image to the <code>static/images/</code> folder first, then enter just the filename below.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Project Information</h2>
+    <form action="{{ url_for('add_project') }}" method="POST">
+      <div class="row">
+        <div class="field">
+          <label for="title">Project Title *</label>
+          <input type="text" id="title" name="title" placeholder="e.g., My Awesome Website" required>
+        </div>
+        
+        <div class="field">
+          <label for="description">Description *</label>
+          <textarea id="description" name="description" placeholder="Describe your project..." required style="min-height: 100px;"></textarea>
+        </div>
+        
+        <div class="field">
+          <label for="imagefilename">Image Filename *</label>
+          <input type="text" id="imagefilename" name="imagefilename" placeholder="e.g., project.jpg or project.png" required>
+          <small style="color: #666; font-size: 0.9em;">Enter just the filename (e.g., myproject.jpg). Make sure the image is in the static/images/ folder.</small>
+        </div>
+        
+        <div class="field">
+          <label for="technologies">Technologies Used</label>
+          <input type="text" id="technologies" name="technologies" placeholder="e.g., Python, Flask, HTML, CSS">
+          <small style="color: #666; font-size: 0.9em;">Separate multiple technologies with commas.</small>
+        </div>
+        
+        <div class="field">
+          <label for="projecturl">Project URL</label>
+          <input type="url" id="projecturl" name="projecturl" placeholder="https://example.com">
+          <small style="color: #666; font-size: 0.9em;">Link to the live project (optional).</small>
+        </div>
+        
+        <div class="field">
+          <label for="githuburl">GitHub URL</label>
+          <input type="url" id="githuburl" name="githuburl" placeholder="https://github.com/username/repo">
+          <small style="color: #666; font-size: 0.9em;">Link to the GitHub repository (optional).</small>
+        </div>
+        
+        <div>
+          <button type="submit" class="btn primary">Add Project</button>
+          <a href="{{ url_for('projects') }}" class="btn" style="margin-left: 10px;">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </section>
+</main>
+{% endblock %}

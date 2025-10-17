@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Project Added — Mischa Dzubay{% endblock %}
+
+{% block content %}
+<main class="container">
+  <section class="panel">
+    <h1>Success!</h1>
+    <p>Your project has been added successfully.</p>
+    <div style="margin-top: 20px;">
+      <a href="{{ url_for('projects') }}" class="btn primary">View Projects</a>
+      <a href="{{ url_for('add_project') }}" class="btn" style="margin-left: 10px;">Add Another Project</a>
+      <a href="{{ url_for('index') }}" class="btn" style="margin-left: 10px;">Go Home</a>
+    </div>
+  </section>
+</main>
+{% endblock %}

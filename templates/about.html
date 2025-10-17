@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}About — Mischa Dzubay{% endblock %}
+
+{% block content %}
+<main class="container">
+  <section class="panel">
+    <div class="grid">
+      <div class="col-6">
+        <h1>About Me</h1>
+        <p>I am passionate about driving sustainable corporate innovation with AI. Deeply analytical and committed to integrity. Currently getting my M.S. in Information Systems at the Kelley School of Business. I am seeking tech role internships for the summer of 2026, with the knowledge I have and the skills I am in the process of getting.</p>
+      </div>
+      <div class="col-6" style="display:flex; justify-content:center; align-items:flex-start;">
+        <figure style="text-align:center;">
+          <img class="avatar" src="{{ url_for('static', filename='static/images/MSIS_Headshot_2025.jpg') }}" alt="Portrait of Mischa Dzubay">
+          <figcaption style="color:var(--color-text-dim); margin-top:8px;"></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Goals</h2>
+    <ul>
+      <li>Short-term goal: <em>Run a marathon</em></li>
+      <li>Mid-term goal: <em>Live in Cincinnati</em></li>
+      <li>Long-term goal: <em>Open a restaurant</em></li>
+    </ul>
+  </section>
+</main>
+{% endblock %}

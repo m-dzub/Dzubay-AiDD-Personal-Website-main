@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Mischa Dzubay — Personal Website{% endblock %}
+
+{% block content %}
+<main class="container">
+  <section class="panel hero">
+    <div>
+      <h1>Hi, I'm Mischa Dzubay</h1>
+      <p class="lead">I'm an Information Systems Masters Student at Indiana University Bloomington and an avid runner</p>
+      <div class="btn-row" style="margin-top: 16px;">
+        <a class="btn primary" href="{{ url_for('projects') }}">View Projects</a>
+        <a class="btn" href="{{ url_for('resume') }}">See Resume</a>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:center;">
+      <img class="avatar" src="{{ url_for('static', filename='static/images/MSIS_Headshot_2025.jpg') }}" alt="Portrait of Mischa Dzubay">
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>About this site</h2>
+    <p>This is my personal website, feel free to look around and get to know me better!</p>
+  </section>
+</main>
+{% endblock %}
